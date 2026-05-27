@@ -322,39 +322,38 @@ export default function EdupreneurLandingPage() {
               <p className="text-xs text-slate-500 font-medium">
                 SAT Prep • College Apps • Tutoring
               </p>
-              <p className="text-[11px] text-slate-400 font-semibold mt-0.5">
-                v0.5
-              </p>
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-            <a href="#services" className="hover:text-blue-700 transition">
-              Services
-            </a>
-            <a href="#about" className="hover:text-blue-700 transition">
-              About
-            </a>
-            <a href="#results" className="hover:text-blue-700 transition">
-              Results
-            </a>
-            <a href="#testimonials" className="hover:text-blue-700 transition">
-              Testimonials
-            </a>
-            <a href="#/blogs" className="hover:text-blue-700 transition">
+          <div className="flex items-center gap-5 lg:gap-8 ml-auto">
+            <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+              <a href="#services" className="hover:text-blue-700 transition">
+                Services
+              </a>
+              <a href="#about" className="hover:text-blue-700 transition">
+                About
+              </a>
+              <a href="#results" className="hover:text-blue-700 transition">
+                Results
+              </a>
+              <a href="#testimonials" className="hover:text-blue-700 transition">
+                Testimonials
+              </a>
+            <a href="/blog/" className="hover:text-blue-700 transition">
               Blog
             </a>
-          </div>
+            </div>
 
-          <a
-            href="https://calendly.com/futurereadycollegeprep/free-15-min-consultation"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={trackCalendlyClick}
-            className="hidden sm:inline-flex rounded-xl bg-blue-700 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-blue-800 transition"
-          >
-            Book a Free Consultation
-          </a>
+            <a
+              href="https://calendly.com/futurereadycollegeprep/free-15-min-consultation"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackCalendlyClick}
+              className="hidden sm:inline-flex rounded-xl bg-blue-700 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-blue-800 transition"
+            >
+              Book a Free Consultation
+            </a>
+          </div>
         </div>
       </nav>
 
