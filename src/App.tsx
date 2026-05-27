@@ -1,6 +1,8 @@
 ﻿import { useEffect, useState, type FormEvent } from "react";
 import ReactGA from "react-ga4";
 import SatPage from "./SatPage";
+import CollegeAppsPage from "./CollegeAppsPage";
+import TutoringPage from "./TutoringPage";
 import BlogsHubPage from "./BlogsHubPage";
 import CollegeAdmissionsArticlePage from "./CollegeAdmissionsArticlePage";
 import type { BlogPost } from "./BlogsHubPage";
@@ -276,6 +278,12 @@ export default function EdupreneurLandingPage() {
   if (hashPath === "#/sat") {
     return <SatPage onBack={() => (window.location.hash = "")} />;
   }
+  if (hashPath === "#/college-apps") {
+    return <CollegeAppsPage onBack={() => (window.location.hash = "")} />;
+  }
+  if (hashPath === "#/tutoring") {
+    return <TutoringPage onBack={() => (window.location.hash = "")} />;
+  }
   if (hashPath === "#/blogs") {
     return <BlogsHubPage onBack={() => (window.location.hash = "")} posts={blogPosts} />;
   }
@@ -450,7 +458,7 @@ export default function EdupreneurLandingPage() {
         </div>
       </section>
 
-      <section id="services" className="px-6 py-16">
+      <section id="services" className="scroll-mt-28 px-6 py-16">
         <div className="max-w-7xl mx-auto rounded-[2rem] bg-white border border-slate-200 shadow-xl p-6 md:p-10">
           <div className="text-center max-w-3xl mx-auto mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-slate-950">
@@ -486,7 +494,7 @@ export default function EdupreneurLandingPage() {
                   ))}
                 </div>
                 <a
-                  href={service.title === "SAT Prep" ? "#/sat" : "#contact"}
+                  href={service.title === "SAT Prep" ? "#/sat" : service.title === "College Application Help" ? "#/college-apps" : service.title === "Academic Tutoring" ? "#/tutoring" : "#contact"}
                   className="font-bold hover:underline">
                   Learn More →
                 </a>
@@ -496,7 +504,7 @@ export default function EdupreneurLandingPage() {
         </div>
       </section>
 
-      <section id="about" className="px-6 pb-16">
+      <section id="about" className="scroll-mt-28 px-6 pb-16">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6">
           <div className="lg:col-span-2 rounded-[2rem] bg-white border border-slate-200 shadow-sm p-8">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700 mb-3">
@@ -538,7 +546,7 @@ export default function EdupreneurLandingPage() {
             </div>
           </div>
 
-          <div id="results" className="lg:col-span-3 rounded-[2rem] bg-white border border-slate-200 shadow-sm p-8">
+          <div id="results" className="scroll-mt-28 lg:col-span-3 rounded-[2rem] bg-white border border-slate-200 shadow-sm p-8">
             <h2 className="text-2xl font-black text-slate-950 mb-6">
               My Results & Achievements
             </h2>
@@ -625,7 +633,7 @@ export default function EdupreneurLandingPage() {
         </div>
       </section>
 
-      <section id="testimonials" className="px-6 pb-16">
+      <section id="testimonials" className="scroll-mt-28 px-6 pb-16">
         <div className="max-w-7xl mx-auto rounded-[2rem] bg-white border border-slate-200 shadow-sm p-8 md:p-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-black text-slate-950">
@@ -653,7 +661,7 @@ export default function EdupreneurLandingPage() {
         </div>
       </section>
 
-      <section id="contact" className="px-6 pb-20">
+      <section id="contact" className="scroll-mt-28 px-6 pb-20">
         <div className="max-w-7xl mx-auto rounded-[2rem] bg-gradient-to-r from-blue-700 to-blue-600 text-white p-8 md:p-12 shadow-xl grid lg:grid-cols-2 gap-8 items-start">
           <div>
             <h2 className="text-3xl md:text-4xl font-black">
@@ -743,6 +751,8 @@ export default function EdupreneurLandingPage() {
     </div>
   );
 }
+
+
 
 
 
