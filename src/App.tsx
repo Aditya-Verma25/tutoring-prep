@@ -241,7 +241,7 @@ export default function EdupreneurLandingPage() {
   const testimonials = [
     "Aditya helped my daughter raise her SAT score by 130 points in just two months. His study plan was clear, targeted, and easy to follow.",
     "The college essay coaching was amazing. My son kept his own voice, but every draft became more focused and compelling.",
-    "What stood out most was how supportive and organized he is. Weekly check-ins kept our student on track without feeling overwhelmed.",
+    "What stood out most was how supportive and organized he is. Weekly check-ins kept me on track without feeling overwhelmed.",
   ];
 
   const testimonialAuthors = ["Olivia M.", "Daniel Y.", "Aarav P. (Student)"];
