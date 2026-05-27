@@ -3,11 +3,13 @@ import ReactGA from "react-ga4";
 import SatPage from "./SatPage";
 import BlogsHubPage from "./BlogsHubPage";
 import CollegeAdmissionsArticlePage from "./CollegeAdmissionsArticlePage";
+import type { BlogPost } from "./BlogsHubPage";
 
 export default function EdupreneurLandingPage() {
   const formspreeEndpoint = "https://formspree.io/f/xredoaqn";
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [hashPath, setHashPath] = useState(window.location.hash);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     ReactGA.initialize("G-2STM34BZQ2");
@@ -18,6 +20,21 @@ export default function EdupreneurLandingPage() {
     const handleHashChange = () => setHashPath(window.location.hash);
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    async function loadBlogPosts() {
+      try {
+        const response = await fetch("/blog-posts.json");
+        if (!response.ok) return;
+        const posts = (await response.json()) as BlogPost[];
+        setBlogPosts(posts);
+      } catch {
+        setBlogPosts([]);
+      }
+    }
+
+    loadBlogPosts();
   }, []);
 
   function trackCalendlyClick() {
@@ -260,11 +277,18 @@ export default function EdupreneurLandingPage() {
     return <SatPage onBack={() => (window.location.hash = "")} />;
   }
   if (hashPath === "#/blogs") {
-    return <BlogsHubPage onBack={() => (window.location.hash = "")} />;
+    return <BlogsHubPage onBack={() => (window.location.hash = "")} posts={blogPosts} />;
   }
-  if (hashPath === "#/blogs/college-admissions-guide") {
+  if (hashPath.startsWith("#/blogs/")) {
+    const slug = hashPath.replace("#/blogs/", "");
+    const post = blogPosts.find((item) => item.slug === slug);
+    if (!post) {
+      return <BlogsHubPage onBack={() => (window.location.hash = "")} posts={blogPosts} />;
+    }
+
     return (
       <CollegeAdmissionsArticlePage
+        post={post}
         onBackHome={() => (window.location.hash = "")}
         onBackToHub={() => (window.location.hash = "#/blogs")}
       />
@@ -719,6 +743,8 @@ export default function EdupreneurLandingPage() {
     </div>
   );
 }
+
+
 
 
 
